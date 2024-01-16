@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>GIPHY Search</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">
+        <img
+          class="header__logo--logoImg"
+          src="https://cdn.worldvectorlogo.com/logos/giphy-logo-1.svg"
+          alt=""
+          width="40"
+          height="40"
+        />
+        <h1 class="header__logo--nameLogo">GIPHY</h1>
+      </div>
+      <div class="header__searchBlock">
+        <label class="header__searchBlock__label">
+          <input class="label__input" type="text" id="searchInput" />
+          <img
+            class="label__search"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1024px-Search_Icon.svg.png"
+            alt=""
+            id="searchButton"
+          />
+        </label>
+      </div>
+    </header>
+
+    <main class="mainList">
+      <ul id="gifList"></ul>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
