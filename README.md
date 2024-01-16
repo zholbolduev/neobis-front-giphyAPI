@@ -1,6 +1,6 @@
 # GIPHY API Project
 
-a simple project for searching and displaying gifs
+This project is a simple web application for searching and displaying GIF images using the Giphy API.
 
 ## Stack:
 
