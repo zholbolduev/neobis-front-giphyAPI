@@ -6,43 +6,55 @@ const gifList = document.getElementById("gifList");
 
 searchButton.addEventListener("click", perfomSearch);
 
+searchInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    perfomSearch();
+  }
+});
+
 function perfomSearch() {
   const searchQuery = searchInput.value.trim();
 
   if (searchQuery !== "") {
-    fetchGifs(searchQuery);
+    fetchGifts(searchQuery);
   }
 }
 
-function fetchGifs(query) {
-  const endpointUrl = "https://api.giphy.com/v1/gifs/search";
-  const apiUrl = new URL(endpointUrl);
+function fetchGifts(query) {
+  const endpointURL = "https://api.giphy.com/v1/gifs/search";
+  const apiurl = new URL(endpointURL);
 
-  apiUrl.searchParams.append("api_key", apikey);
-  apiUrl.searchParams.append("q", query);
+  apiurl.searchParams.append("api_key", apikey);
+  apiurl.searchParams.append("q", query);
 
-  fetch(apiUrl)
+  fetch(apiurl)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.error}`);
+        throw new Error(`HTTP error, status: ${response.error}`);
       }
       return response.json();
     })
     .then((data) => {
-      console.log("Successful GIPHY API request:", data);
+      console.log(data);
       displayGifs(data.data);
     })
     .catch((error) => {
-      console.error("Fetch error:", error);
+      console.error(error);
     });
 }
+
 function displayGifs(gifs) {
   gifList.innerHTML = "";
+
+  const li = document.createElement("li");
+  const img = document.createElement("img");
 
   gifs.forEach((gif) => {
     const li = document.createElement("li");
     const img = document.createElement("img");
+
     img.src = gif.images.original.url;
+
     li.appendChild(img);
     gifList.appendChild(li);
   });
